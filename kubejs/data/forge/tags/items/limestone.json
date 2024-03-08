@@ -1,0 +1,16 @@
+{
+    "replace": false,
+    "values": [
+        "#create:stone_types/limestone",
+        "alexscaves:limestone",
+        "alexscaves:limestone_stairs",
+        "alexscaves:limestone_slab",
+        "alexscaves:limestone_wall",
+        "alexscaves:limestone_pillar",
+        "alexscaves:limestone_chiseled",
+        "alexscaves:smooth_limestone",
+        "alexscaves:smooth_limestone_stairs",
+        "alexscaves:smooth_limestone_slab",
+        "alexscaves:smooth_limestone_wall"
+    ]
+}
