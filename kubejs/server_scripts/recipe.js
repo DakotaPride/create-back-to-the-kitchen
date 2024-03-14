@@ -17,9 +17,30 @@ ServerEvents.recipes(event => {
       })
     })
 
+    event.recipes.create.haunting('forbidden_arcanus:darkstone', 'minecraft:obsidian').id('kubejs:haunting/darkstone_from_obsidian')
+    event.shapeless('forbidden_arcanus:arcane_crystal_block', ['9x forbidden_arcanus:arcane_crystal_dust']).id('kubejs:arcane_crystal_block_from_dust')
+    event.recipes.create.sandpaper_polishing('forbidden_arcanus:stellarite_piece', 'thermal:slag').id('kubejs:sandpaper_polishing/stellarite_piece')
+
+    // event.recipes.create.pressing('thermal:tin_plate', 'thermal:tin_ingot')
+    event.recipes.create.pressing('thermal:lead_plate', 'thermal:lead_ingot')
+    event.recipes.create.pressing('thermal:silver_plate', 'thermal:silver_ingot')
+    event.recipes.create.pressing('thermal:nickel_plate', 'thermal:nickel_ingot')
+    // event.recipes.create.pressing('thermal:bronze_plate', 'thermal:constantan_ingot')
+    // event.recipes.create.pressing('thermal:electrum_plate', 'thermal:constantan_ingot')
+    event.recipes.create.pressing('thermal:invar_plate', 'thermal:invar_ingot')
+    event.recipes.create.pressing('thermal:constantan_plate', 'thermal:constantan_ingot')
+    // event.recipes.create.pressing('thermal:iron_plate', 'thermal:constantan_ingot')
+    // event.recipes.create.pressing('thermal:gold_plate', 'thermal:constantan_ingot')
+    // event.recipes.create.pressing('thermal:copper_plate', 'thermal:constantan_ingot')
+    // event.recipes.create.pressing('thermal:netherite_plate', 'thermal:constantan_ingot')
+    event.recipes.create.pressing('thermal:signalum_plate', 'thermal:signalum_ingot')
+    event.recipes.create.pressing('thermal:lumium_plate', 'thermal:lumium_ingot')
+    event.recipes.create.pressing('thermal:enderium_plate', 'thermal:enderium_ingot')
+
     event.remove('createaddition:mixing/netherrack')
     event.recipes.create.filling('minecraft:netherrack', [Item.of('minecraft:cobblestone'), Fluid.of('sons_of_sins:blood', 50)]).id('kubejs:filling/netherrack_from_blood')
 
+    event.recipes.create.mixing(Fluid.of('kubejs:molten_soul_steel', 250), ['sons_of_sins:soul_steel', 2]).heated().id('kubejs:mixing/molten_soul_steel_from_mixing')
     event.recipes.create.mixing(Fluid.of('minecraft:lava', 100), Fluid.of('kubejs:molten_soul_steel', 50)).superheated().id('kubejs:mixing/lava_from_molten_soul_steel')
     event.recipes.create.filling('kubejs:bowl_of_lava', [Item.of('minecraft:bowl'), Fluid.of('minecraft:lava', 250)]).id('kubejs:filling/lava_bowl')
     event.recipes.create.emptying([Fluid.of('minecraft:lava', 250), Item.of('minecraft:bowl')], 'kubejs:bowl_of_lava').id('kubejs:emptying/lava_from_lava_bowl')
@@ -333,7 +354,7 @@ ServerEvents.recipes(event => {
     X: 'kubejs:twinkling_void_dust',
     A: 'forbidden_arcanus:arcane_crystal_dust',
     B: 'forbidden_arcanus:mundabitur_dust',
-    E: 'minecraft:netherite_ingot'
+    E: 'create:brass_ingot'
   })
 
   event.remove('create_dd:crafting/crafting_inductive_mechanism1')
@@ -394,10 +415,10 @@ ServerEvents.recipes(event => {
     event.recipes.create.filling(incompleteSealedMechanism, [incompleteSealedMechanism, Fluid.of('tfmg:diesel', 100)]),
     event.recipes.create.deploying(incompleteSealedMechanism, [incompleteSealedMechanism, 'create:fluid_tank'])
   ]).transitionalItem(incompleteSealedMechanism).loops(2)
-  // From Thermal
+  // From Thermal + Industrial Iron Sheet
   event.recipes.create.sequenced_assembly([
     Item.of('create_dd:sealed_mechanism', 1)
-  ], ['create_dd:rubber', 'thermal:cured_rubber'], [
+  ], ['create_dd:industrial_iron_sheet', 'createdeco:industrial_iron_sheet'], [
     event.recipes.create.deploying(incompleteSealedMechanism, [incompleteSealedMechanism, 'thermal:copper_gear']),
     event.recipes.create.filling(incompleteSealedMechanism, [incompleteSealedMechanism, Fluid.of('thermal:crude_oil', 1000)]),
     event.recipes.create.deploying(incompleteSealedMechanism, [incompleteSealedMechanism, 'create:fluid_tank'])
@@ -962,7 +983,6 @@ event.shaped('4x thermal:signalum_ingot', [
   B: 'forbidden_arcanus:mundabitur_dust',
   C: 'minecraft:fire_charge'
 })
-event.recipes.create.pressing('kubejs:signalum_sheet', 'thermal:signalum_ingot')
 
 event.recipes.create.crushing([Item.of('create:crushed_raw_silver', 1).withChance(0.40), Item.of('thermal:silver_nugget', 1).withChance(0.40)], 'minecraft:end_stone')
 
@@ -1120,6 +1140,7 @@ event.shaped('thermal:fluid_cell_frame', [
 
       // Garnished Blood Imbibation
       ethericBloodImbibation('forbidden_arcanus:corrupti_dust', 'garnished:crushed_ender_pearl', 2)
+      ethericBloodImbibation('minecraft:iron_block', 'sons_of_sins:soul_steel_block', 1)
 
       // (Garnished) Freezing Recipe
       let garnishedFreezingRecipe = (input, result, count) => {
@@ -1195,6 +1216,7 @@ event.shaped('thermal:fluid_cell_frame', [
 
       vintagePolishingRecipe(2, 'alexscaves:raw_azure_neodymium', 'kubejs:polished_azure_neodymium', 1, 20)
       vintagePolishingRecipe(2, 'alexscaves:raw_scarlet_neodymium', 'kubejs:polished_scarlet_neodymium', 1, 20)
+      vintagePolishingRecipe(2, 'thermal:slag', 'forbidden_arcanus:stellarite_piece', 1, 20)
 
       let biomancyDigestingRecipe = (input, cost, time, count, output, recipeName) => {
         event.custom({
